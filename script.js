@@ -7,12 +7,12 @@ const del = document.querySelector('.delete');
 let n1 = null;
 let operator = null;
 let n2 = null;
-let result = null;
 let operating = false;
 let equalClick = false;
 let operatorClick = false;
 let chain = false;
 display.textContent = null;
+let i = 0;
 
 
 numbers.forEach(function(number){
@@ -28,6 +28,7 @@ numbers.forEach(function(number){
             operating = false;
             equalClick = false;
         }
+
         display.textContent += number.textContent;
     })
         
@@ -36,10 +37,10 @@ numbers.forEach(function(number){
 operators.forEach(function(op){
     op.addEventListener('click', function(e){
         if(chain){
-            operator = e.target.className;
             n2 = +display.textContent;
             display.textContent = operate(n1, n2, operation[operator]);
             n1 = +display.textContent;
+            operator = e.target.className;
             chain = false;
             operating = true;
         }
@@ -49,7 +50,6 @@ operators.forEach(function(op){
             operator = e.target.className;
             operatorClick = true;
         }
-        
     })
 })
 
@@ -75,6 +75,10 @@ clear.addEventListener('click', function(e){
     n1 = null
     n2 = null
     operator = null
+    operating = false;
+    equalClick = false;
+    operatorClick = false;
+    chain = false;
 
 })
 
@@ -111,8 +115,7 @@ function operate(a, b, op){
     return op(a, b)
 }
 
-// add decimals, prevent numbers from leaving display. 
-
+// add decimals, prevent numbers from leaving display, display error if user tries to divide by 0.
 
 
 
