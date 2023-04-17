@@ -1,0 +1,80 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.frame {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    width: 400px;
+    background-color:rgb(22, 22, 116);
+    padding: 20px;
+}
+
+.display{
+    display: flex;
+    background-color: antiquewhite;
+    height: 20%;
+    margin-bottom: 30px;
+    padding: 0px 10px;
+    font-size: 48px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.numbersandsymbols{
+    display: flex;
+    flex-grow: 1;
+}
+
+.symbols{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.symbols > button {
+    height: 33%;
+    width: 60px;
+}
+
+button.add {
+    height: 66%;
+}
+
+.numbers{
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+}
+
+.numbers > button {
+    width: 30%;
+   
+}
+
+.otherbuttons {
+    display: flex;
+    gap: 10px;
+    max-height: 25px;
+    flex-grow: 1;
+}
+
+.otherbuttons > button {
+    width: 25%;
+}
