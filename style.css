@@ -16,7 +16,7 @@ body{
     background-color: #41644A;
     padding: 20px;
     box-shadow: 10px 10px #263A29;
-    
+ 
 }
 
 .display{
@@ -29,6 +29,7 @@ body{
     justify-content: flex-end;
     align-items: flex-end;
     font-family: 'DS-Digital', sans-serif;
+    border: 5px solid  #263A29; 
 }
 
 .buttons{
