@@ -15,9 +15,9 @@ let chain = false;
 let displayLength = null;
 display.textContent = null;
 
-
 numbers.forEach(function(number){
     number.addEventListener('click', function(e){
+        
         if (operating){
             display.textContent = null;
             operating = false;
@@ -52,8 +52,10 @@ operators.forEach(function(op){
             }
             
             operator = e.target.className;
+            
             chain = false;
             operating = true;
+            
 
         }
         else {
