@@ -1,4 +1,4 @@
-const operators = document.querySelectorAll('.symbols');
+const operators = document.querySelectorAll('#s');
 const display = document.querySelector('.display')
 const numbers = document.querySelectorAll('.n');
 const equals = document.querySelector('.equal');
@@ -41,6 +41,7 @@ operators.forEach(function(op){
     op.addEventListener('click', function(e){
         if(chain){
             n2 = +display.textContent;
+            console.log(operator);
             display.textContent = operate(n1, n2, operation[operator]);
             n1 = +display.textContent;
             
@@ -155,15 +156,6 @@ function divide(a, b){
 }
 
 function operate(a, b, op){
-    return op(a, b)
+    return op(a, b);
 }
-
-
-
-/*if(displayLength > 14 && includes){
-    displayArray = display.textContent.split("");
-    displayArray.splice(displayLength - 1, 0, ".");
-    decimalN = +displayArray.join("");
-    console.log(Math.round(decimalN));
-} */
 
