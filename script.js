@@ -4,6 +4,7 @@ const numbers = document.querySelectorAll('.n');
 const equals = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 const del = document.querySelector('.delete');
+const dot = document.querySelector('.dot');
 let n1 = null;
 let operator = null;
 let n2 = null;
@@ -11,8 +12,8 @@ let operating = false;
 let equalClick = false;
 let operatorClick = false;
 let chain = false;
+let displayLength = null;
 display.textContent = null;
-let i = 0;
 
 
 numbers.forEach(function(number){
@@ -28,8 +29,10 @@ numbers.forEach(function(number){
             operating = false;
             equalClick = false;
         }
-
+        
         display.textContent += number.textContent;
+       
+        preventOverflow();
     })
         
 })
@@ -40,9 +43,18 @@ operators.forEach(function(op){
             n2 = +display.textContent;
             display.textContent = operate(n1, n2, operation[operator]);
             n1 = +display.textContent;
+            
+            
+            preventOverflow()
+           
+            if(operator === "divide" && n2 === 0){
+                display.textContent = "ERROR";
+            }
+            
             operator = e.target.className;
             chain = false;
             operating = true;
+
         }
         else {
             operating = true;
@@ -52,6 +64,8 @@ operators.forEach(function(op){
         }
     })
 })
+
+
 
 equals.addEventListener('click', function(e){
     if(equalClick || !operatorClick){
@@ -64,6 +78,10 @@ equals.addEventListener('click', function(e){
     n2 = +display.textContent;
     result = operate(n1, n2, operation[operator]);
     display.textContent = operate(n1, n2, operation[operator]);
+    preventOverflow();
+    if(operator === "divide" && n2 === 0){
+                display.textContent = "ERROR";
+    }
     n1 = null;
     n2 = null;
     operator = null;
@@ -87,6 +105,29 @@ del.addEventListener('click', function(e){
     numArray.pop();
     display.textContent = numArray.join('');
 })
+
+dot.addEventListener('click', function(e){
+    if(display.textContent.toString().includes('.')){
+        return;
+    }
+    else if(display.textContent.toString().length === 0) {
+        display.textContent = "0" + dot.textContent;
+    }
+    else{
+        display.textContent = display.textContent + dot.textContent;
+    } 
+})
+
+function preventOverflow(){
+    displayLength = display.textContent.length;
+            
+    if(displayLength > 14){
+        display.style.fontSize = '32px';
+    }
+    else{
+        display.style.fontSize = '42px';
+    }
+}
 
 const operation = {
     add: add,
@@ -115,8 +156,12 @@ function operate(a, b, op){
     return op(a, b)
 }
 
-// add decimals, prevent numbers from leaving display, display error if user tries to divide by 0.
 
 
-
+/*if(displayLength > 14 && includes){
+    displayArray = display.textContent.split("");
+    displayArray.splice(displayLength - 1, 0, ".");
+    decimalN = +displayArray.join("");
+    console.log(Math.round(decimalN));
+} */
 
