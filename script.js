@@ -39,6 +39,8 @@ numbers.forEach(function(number){
   
 })
 
+
+
 document.addEventListener('keydown', function(e){
 
     if(!isNaN(e.key)){
@@ -72,6 +74,7 @@ document.addEventListener('keydown', function(e){
     }
 
     else if(e.key === '=' || e.key === 'Enter'){
+        e.preventDefault();
         showResultKeybind();
     }
     
