@@ -29,7 +29,7 @@ body{
     justify-content: flex-end;
     align-items: flex-end;
     font-family: 'DS-Digital', sans-serif;
-    border: 5px solid  #263A29; 
+    border: 10px groove  #263A29; 
 }
 
 .buttons{
